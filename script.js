@@ -4,6 +4,8 @@ var generateBtn = document.querySelector("#generate");
 var length;
 var lowercase;
 var uppercase;
+var numeric;
+var special;
 
 // Write password to the #password input
 function writePassword() {
@@ -67,7 +69,7 @@ function promptLength() {
 function promptLowercase() {
 
   //Confirm prompt to configure using lowercase characters
-  lowercase = confirm("Click 'OK' if you like lowercase characters");
+  lowercase = confirm("Click 'OK' if you would like lowercase characters");
   console.log(lowercase);
   return lowercase;
 
@@ -76,11 +78,30 @@ function promptLowercase() {
 function promptUppercase() {
 
   //Confirm prompt to configure using uppercase characters
-  uppercase = confirm("Click 'OK' if you like uppercase characters");
+  uppercase = confirm("Click 'OK' if you would like uppercase characters");
   console.log(uppercase);
   return uppercase;
 
 }
+
+function promptNumeric() {
+
+  //Confirm prompt to configure using numeric characters
+  numeric = confirm("Click 'OK' if you would like numeric characters");
+  console.log(numeric);
+  return numeric;
+
+}
+
+function promptSpecial() {
+
+  //Confirm prompt to configure using special characters
+  special = confirm("Click 'OK' if you would like special characters");
+  console.log(special);
+  return special;
+
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
