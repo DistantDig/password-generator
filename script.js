@@ -62,10 +62,10 @@ function promptLength() {
   console.log("Length: " + length);
 
   //Prompt loop requesting length
-  while (!(length >= 8 && length <=120)) {
+  while (!(length >= 8 && length <=128)) {
 
     //Acceptable length
-    if (length >= 8 && length <=120) {
+    if (length >= 8 && length <=128) {
       console.log("Length: " + length);
       return length;
     } 
