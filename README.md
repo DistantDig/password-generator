@@ -16,4 +16,4 @@ Once an acceptable length has been input by the user, then the first of four pro
 
 Once the user has made their choice on the final prompt, a password will generate in the box at the center of the page. This password will have all of the configured features and can be copied for use. It should also be noted that all of the input is output to the console which is only viewable through some sort of dev tool such as Chrom DevTools. The password is also peiced together in the console, so it's possible to also view the proccess it undertook as each character was added.
 
-Deployed project: 
+Deployed project: https://distantdig.github.io/password-generator/
