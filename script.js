@@ -9,6 +9,9 @@ var special;
 
 var characters;
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 // Write password to the #password input
 function writePassword() {
   passwordConfiguration();
@@ -19,43 +22,8 @@ function writePassword() {
 
 }
 
-function generatePassword() {
-  
-  password = "";
-  while (password.length < length) {
-    console.log("Password: " + password);
 
-    switch (Math.floor(Math.random() * 4)) {
-      case 0:
-        if (lowercase) {
-          password += randomLowercase();
-          console.log("Password: " + password);
-        }
-        break;
-      case 1:
-        if (uppercase) {
-          password += randomUppercase();
-          console.log("Password: " + password);
-        }
-        break;
-      case 2:
-        if (numeric) {
-          password += randomNumeric();
-          console.log("Password: " + password);
-        }
-        break;
-      case 3:
-        if (special) {
-          password += randomSpecial();
-          console.log("Password: " + password);
-        }
-        break;
-    }
-  }
-
-  return password;
-
-}
+//PASSWORD CONFIGURATION FUNCTIONS
 
 function passwordConfiguration() {
   
@@ -85,7 +53,6 @@ function passwordConfiguration() {
   if (characters == undefined || characters == null || characters == false) {
     return;
   }
-
 }
 
 function promptLength() {
@@ -125,14 +92,12 @@ function promptLength() {
   }
 }
 
-
 function promptLowercase() {
 
   //Confirm prompt to configure using lowercase characters
   lowercase = confirm("Click 'OK' if you would like lowercase characters");
   console.log(lowercase);
   return lowercase;
-
 }
 
 function promptUppercase() {
@@ -141,7 +106,6 @@ function promptUppercase() {
   uppercase = confirm("Click 'OK' if you would like uppercase characters");
   console.log(uppercase);
   return uppercase;
-
 }
 
 function promptNumeric() {
@@ -150,7 +114,6 @@ function promptNumeric() {
   numeric = confirm("Click 'OK' if you would like numeric characters");
   console.log(numeric);
   return numeric;
-
 }
 
 function promptSpecial() {
@@ -159,9 +122,7 @@ function promptSpecial() {
   special = confirm("Click 'OK' if you would like special characters");
   console.log(special);
   return special;
-
 }
-
 
 function ensureCharacters() {
 
@@ -209,6 +170,51 @@ function ensureCharacters() {
   }
 }
 
+
+//PASSWORD GENERATION FUNCTIONS
+
+function generatePassword() {
+  
+  //Resets password
+  password = "";
+
+  //Loops for as long as the password has not met length requirement
+  while (password.length < length) {
+    console.log("Password: " + password);
+
+    //Adds 1 random character
+    switch (Math.floor(Math.random() * 4)) {
+      case 0:
+        if (lowercase) {
+          password += randomLowercase();
+          console.log("Password: " + password);
+        }
+        break;
+      case 1:
+        if (uppercase) {
+          password += randomUppercase();
+          console.log("Password: " + password);
+        }
+        break;
+      case 2:
+        if (numeric) {
+          password += randomNumeric();
+          console.log("Password: " + password);
+        }
+        break;
+      case 3:
+        if (special) {
+          password += randomSpecial();
+          console.log("Password: " + password);
+        }
+        break;
+    }
+  }
+
+  return password;
+
+}
+
 //Random character generators
 function randomLowercase() {
   var characters = "abcdefghijklmnopqrstuvxyz"
@@ -228,6 +234,3 @@ function randomSpecial() {
   var characters = "!@#$%^&*()~<>?:;,.-=_+"
   return characters.charAt(Math.random() * 23);
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
