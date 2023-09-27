@@ -11,6 +11,7 @@ var characters;
 
 // Write password to the #password input
 function writePassword() {
+  passwordConfiguration();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -20,6 +21,53 @@ function writePassword() {
 
 function generatePassword() {
   
+  password = "";
+  while (password.length < length) {
+    console.log("Password: " + password);
+
+    switch (Math.floor(Math.random() * 4)) {
+      case 0:
+        if (lowercase) {
+          password += randomLowercase();
+          console.log("Password: " + password);
+        }
+        break;
+      case 1:
+        if (uppercase) {
+          password += randomUppercase();
+          console.log("Password: " + password);
+        }
+        break;
+      case 2:
+        if (numeric) {
+          password += randomNumeric();
+          console.log("Password: " + password);
+        }
+        break;
+      case 3:
+        if (special) {
+          password += randomSpecial();
+          console.log("Password: " + password);
+        }
+        break;
+    }
+  }
+
+  return password;
+
+}
+
+function passwordConfiguration() {
+  
+  //Reset variables
+  length = undefined;
+  lowercase = undefined;
+  uppercase = undefined;
+  numeric = undefined;
+  special = undefined;
+  
+  characters = undefined;
+
   //Prompt requesting length
   promptLength();
   if (length == undefined || length == null) {
@@ -39,7 +87,6 @@ function generatePassword() {
   }
 
 }
-
 
 function promptLength() {
 
@@ -121,8 +168,6 @@ function ensureCharacters() {
   //Initial check if at least one character type is selected
   if (!lowercase && !uppercase && !numeric && !special) {
 
-    
-
     //Prompt loop to select at least one character
     while (!lowercase && !uppercase && !numeric && !special) {
       
@@ -164,6 +209,25 @@ function ensureCharacters() {
   }
 }
 
+//Random character generators
+function randomLowercase() {
+  var characters = "abcdefghijklmnopqrstuvxyz"
+  return characters.charAt(Math.random() * 27);
+}
+
+function randomUppercase() {
+  return randomLowercase().toUpperCase();
+}
+
+function randomNumeric() {
+  var characters = "0123456789"
+  return characters.charAt(Math.random() * 9);
+}
+
+function randomSpecial() {
+  var characters = "!@#$%^&*()~<>?:;,.-=_+"
+  return characters.charAt(Math.random() * 23);
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
