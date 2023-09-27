@@ -15,6 +15,10 @@ generateBtn.addEventListener("click", writePassword);
 // Write password to the #password input
 function writePassword() {
   passwordConfiguration();
+  //Checks for at least one character selection
+  if (characters == undefined || characters == null || characters == false) {
+    return;
+  }
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -50,9 +54,6 @@ function passwordConfiguration() {
 
   //Ensures at least one character is selected
   ensureCharacters();
-  if (characters == undefined || characters == null || characters == false) {
-    return;
-  }
 }
 
 function promptLength() {
